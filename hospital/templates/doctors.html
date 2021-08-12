@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<style>
+    .row {
+    padding: 30px;
+    background-color: #fff;
+    }
+    .card{
+    margin : 20px;
+    }
+
+    #image{
+
+        height : 200px;
+        margin : 0 auto;
+    }
+
+</style>
+
+<BR><BR>
+
+<div class="row">
+    {% for i in qs %}
+  <div class="col-sm-4">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{i.first_name}} {{i.last_name}}</h5>
+        <a href="{% url 'new_appointment' %}" class="btn btn-primary">Book Appointment</a>
+      </div>
+    </div>
+  </div>
+    {%endfor%}
+</div>
+{% endblock %}

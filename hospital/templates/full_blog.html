@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<style>
+    .row {
+    padding: 30px;
+    margin : 0 10px 0 10px;
+    background-color: #fff;
+    }
+    .card{
+    margin : 20px;
+    }
+    #image{
+        max-width : 200px;
+        height : 200px;
+        margin : 0 auto;
+    }
+</style>
+
+<BR><BR>
+<div class="row">
+  <div class="col">
+    <div class="card text-center">
+      <div class="card-body">
+        <img class="card-img-top" id="image" src="{{blogs.image.url}}" alt="Card image cap">
+        <h3 class="card-title">{{blogs.title|title}}</h3>
+          <p class="card-text">{{blogs.content |title}}</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

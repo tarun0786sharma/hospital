@@ -1,97 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="#">
+{% extends 'main.html' %}
+{% block content %}
+
+  <div class="container table-responsive py-5"><center>Sign-Up Details</center><br>
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Mail-Id</th>
+        <th scope="col">Username</th>
 
 
-    <title>Title</title>
-</head>
-<body>
-
-
-<style>
-    *{
-        font-size : 20px;
-       }
-
-  #hello-msg{
-    font-size : 18px;
-    color : #fff;
-    margin-right : 20px;
-    }
-</style>
-
-<link rel="stylesheet" type="text/css" href="#">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+      </tr>
+    </thead>
       {% if request.user.is_staff %}
-      <li class="nav-item" style = 'margin-right : 10px;'>
-        <a class="nav-link active" href="#">Doctor Page</a>
-      </li>
-
-        {% else %}
-        <li class="nav-item" style = 'margin-right : 10px;'>
-        <a class="nav-link active" href="#">Patient Page</a>
-      </li>
-      {% endif %}
-    </ul>
-  </div>
-  <span id="hello-msg">Hello, {{request.user}}</span>
-  <span><a id="hello-msg" class="btn btn-primary" href="{% url 'logout' %}">Log Out</a></span>
-</nav>
-
-    <div class="container table-responsive py-5"><center>Sign-Up Details</center><br>
-    <table class="table table-bordered table-hover">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">Mail-Id</th>
-          <th scope="col">Username</th>
-
-
-        </tr>
-      </thead>
-        {% if request.user.is_staff %}
-        <tbody>
-      {% for all_data in all_data %}
-        <tr>
-          <th scope="row">{{all_data.first_name}}</th>
-          <td>{{all_data.last_name}}</td>
-          <td>{{all_data.email}}</td>
-          <td>{{all_data.username}}</td>
-
-        </tr>
-      {% endfor %}
-      </tbody>
-
-        {% else %}
-
       <tbody>
-        <tr>
-          <td>{{user.first_name}}</td>
-          <td>{{user.last_name}}</td>
-          <td>{{user.email}}</td>
-          <td>{{user.username}}</td>
+    {% for all_data in all_data %}
+      <tr>
+        <th scope="row">{{all_data.first_name}}</th>
+        <td>{{all_data.last_name}}</td>
+        <td>{{all_data.email}}</td>
+        <td>{{all_data.username}}</td>
 
-        </tr>
-      </tbody>
-    </table>
-    </div>
-    {% endif %}
+      </tr>
+    {% endfor %}
+    </tbody>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      {% else %}
+
+    <tbody>
+      <tr>
+        <td>{{user.first_name}}</td>
+        <td>{{user.last_name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.username}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  {% endif %}
 
 
-</body>
-</html>
+
+
+{% endblock %}

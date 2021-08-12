@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<style>
+    .row {
+    padding: 30px;
+    background-color: #fff;
+    }
+    .card{
+    margin : 20px;
+    }
+
+    #image{
+
+        height : 200px;
+        margin : 0 auto;
+    }
+
+</style>
+
+<BR><BR>
+
+<div class="row">
+    {% for i in blogs %}
+  <div class="col-sm-4">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" id="image" src="{{i.image.url}}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{i.title|title}}</h5>
+          <h5 class="card-title"><B><U>Category : </U></B>{{i.category|title}}</h5>
+        <p class="card-text">{{i.summary|title}}</p>
+        <a href="{% url 'full_blog' i.id %}" class="btn btn-primary">Read Blog</a>
+      </div>
+    </div>
+  </div>
+    {%endfor%}
+</div>
+
+{% endblock %}

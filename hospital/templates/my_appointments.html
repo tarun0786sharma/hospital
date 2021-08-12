@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+{% block content %}
+
+  <div class="container table-responsive py-5"><center>My Appointments</center><br>
+  <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+          <tr>
+            <th scope="col">Category</th>
+            <th scope="col">Timings</th>
+            <th scope="col">Date</th>
+            <th>Doctor</th>
+          </tr>
+      </thead>
+
+      <tbody>
+      {% for user in User %}
+          <tr>
+            <td>{{user.category}}</td>
+            <td>{{user.timings}}</td>
+            <td>{{user.date_app}}</td>
+            <td>{{user.Doctor.first_name}} {{user.Doctor.last_name}}</td>
+          </tr>
+      {% endfor %}
+      </tbody>
+
+  </table>
+  </div>
+
+
+
+
+{% endblock %}
